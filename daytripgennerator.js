@@ -48,27 +48,30 @@ console.log(myFinalEntertainment);
 
 function vacationChange(vacationChangeArr, allDestinations, allEntertainments, allTransportations, allRestaurants) {
   let vacationDecision;
-  let newDestination;
-  let newEntertainment;
-  let newTransportation;
-  let newRestaurant;
+  let newDestination = vacationChangeArr[0];
+  let newEntertainment = vacationChangeArr[1];
+  let newTransportation = vacationChangeArr[2];
+  let newRestaurant = vacationChangeArr[3];
 
   while (vacationDecision !== 'yes') {
     vacationDecision = prompt('Are you happy with this vacation?');
     if (vacationDecision === 'yes') {
-      return vacationChangeArr;
+      console.log(`Your trip is complete! Your destination is ${newDestination}, your entertainment will be ${newEntertainment}, your form of transportation will be ${newTransportation}, and your restaurant will be ${newRestaurant}`);
+    } else {
+      newDestination = randomDestination(allDestinations);
+      newEntertainment = randomEntertainment(allEntertainments);
+      newTransportation = randomModeOfTransportation(allTransportations);
+      newRestaurant = randomRestaurant(allRestaurants);
+      console.log(newDestination);
+      console.log(newEntertainment);
+      console.log(newTransportation);
+      console.log(newRestaurant);
     }
-    newDestination = randomDestination(allDestinations);
-    newEntertainment = randomEntertainment(allEntertainments);
-    newTransportation = randomModeOfTransportation(allTransportations);
-    newRestaurant = randomRestaurant(allRestaurants);
-    console.log(newDestination, newEntertainment, newTransportation, newRestaurant);
   }
   return [newDestination, newEntertainment, newTransportation, newRestaurant];
 }
 
-let myVacation = [myFinalDestination, myEntertainment, myFinalModeOfTransportation, myFinalRestaurant];
+let myVacation = [myFinalDestination, myFinalEntertainment, myFinalModeOfTransportation, myFinalRestaurant];
 // ['Canada', "Coding", "Bus", "Taco Bell"]
 
 let dayTripGenerator = vacationChange(myVacation, myDestinations, myEntertainment, myModesOfTransportation, myRestaurants);
-console.log(dayTripGenerator);
